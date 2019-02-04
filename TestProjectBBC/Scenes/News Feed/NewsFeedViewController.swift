@@ -20,13 +20,15 @@ final class NewsFeedViewController: UIViewController {
         case empty
         case error(Error)
         case loading
-        case populated
+        case populated(posts: [Post])
     }
 
     // MARK: - Properties
 
     weak var coordinator: NewsFeedCoordinator?
     var viewModel: NewsFeedViewModel!
+
+    private var dataSource = NewsFeedDataSource()
 
     // MARK: - View lifecycle
 
@@ -45,8 +47,16 @@ final class NewsFeedViewController: UIViewController {
     }
 
     private func setupTableView(_ tableView: UITableView?) {
-        tableView?.tableFooterView = UIView()
-        tableView?.estimatedRowHeight = 90
+        guard let tableView = tableView else {
+            return
+        }
+        tableView.tableFooterView = UIView()
+        tableView.estimatedRowHeight = 90
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.dataSource = dataSource
+
+        let nib = UINib(nibName: String(describing: PostTableViewCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: dataSource.cellIdentifier)
     }
 
     // MARK: - Actions
@@ -63,8 +73,8 @@ extension NewsFeedViewController: NewsFeedViewControllerInput {
             displayErrorPlugin(with: error)
         case .loading:
             displayLoadingPlugin()
-        case .populated:
-            // TODO: - Update datasource
+        case .populated(let posts):
+            dataSource.posts = posts
             displayContentPluginIfNeeded()
         }
     }

@@ -42,9 +42,7 @@ final class NewsFeedViewModel {
         newsFeedService.fetchNewsFeed { [weak self] result in
             switch result {
             case .success(let newsFeed):
-                let headlines = newsFeed.headlines
-                print(headlines.count, "of headlines loaded.")
-                // TODO: - Map posts to cell models and update viewController
+                self?.viewController?.update(state: .populated(posts: newsFeed.headlines))
             case .error(let error):
                 self?.viewController?.update(state: .error(error))
             }
