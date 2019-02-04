@@ -8,14 +8,14 @@
 
 import Foundation
 
-public enum APIAdapterError: Error {
+enum APIAdapterError: Error {
     case custom(message: String)
     case invalidData
     case missingToken
     case unknown
 }
 
-public extension APIAdapterError: Decodable {
+extension APIAdapterError: Decodable {
     private enum Keys: String, CodingKey {
         case success
         case message
@@ -33,7 +33,7 @@ public extension APIAdapterError: Decodable {
     }
 }
 
-public extension APIAdapterError: LocalizedError {
+extension APIAdapterError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .custom(let message):

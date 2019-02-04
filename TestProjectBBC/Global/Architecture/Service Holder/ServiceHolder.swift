@@ -15,21 +15,21 @@ public class ServiceHolder {
 
     // MARK: - Initialization
 
-    public init() {
+    init() {
     }
 
     // MARK: - Actions
 
-    public func add<T>(_ type: T.Type, with name: String? = nil, constructor: () -> Service) {
+    func add<T>(_ type: T.Type, with name: String? = nil, constructor: () -> Service) {
         self.add(type, for: constructor(), with: name)
     }
 
-    private func add<T>(_ protocolType: T.Type, for instance: Service, with name: String? = nil) {
+    func add<T>(_ protocolType: T.Type, for instance: Service, with name: String? = nil) {
         let name = name ?? String(reflecting: protocolType)
         servicesDictionary[name] = instance
     }
 
-    public func get<T>(by type: T.Type = T.self) -> T {
+    func get<T>(by type: T.Type = T.self) -> T {
         return get(by: String(reflecting: type))
     }
 

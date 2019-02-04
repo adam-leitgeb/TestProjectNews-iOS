@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum Authentization: String {
+enum Authentization: String {
     case basic = "Basic "
     case bearer = "Bearer "
     case none = ""

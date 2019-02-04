@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum RequestData {
+enum RequestData {
     case jsonBody(Parameters)
     case json(body: Parameters, query: Parameters)
     case urlEncoded(parameters: Parameters)

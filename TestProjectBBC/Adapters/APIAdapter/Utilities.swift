@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension Dictionary where Key == String, Value: Any {
+extension Dictionary where Key == String, Value: Any {
     var queryString: String? {
         var components = URLComponents()
         components.queryItems = map {

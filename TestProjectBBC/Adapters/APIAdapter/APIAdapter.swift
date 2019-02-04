@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class APIAdapter {
+class APIAdapter {
 
     // MARK: - Properties
 
@@ -16,7 +16,7 @@ public class APIAdapter {
 
     // MARK: - Actions
 
-    public func request<T: Codable>(_ request: Request, modelType: T.Type, completion: @escaping (() throws -> T) -> Void) {
+    func request<T: Codable>(_ request: Request, modelType: T.Type, completion: @escaping (() throws -> T) -> Void) {
         execute(request: request) { (data: Data?, error: Error?) in
             if let error = error {
                 completion({ throw error })

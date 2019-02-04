@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Coordinator
 
-public protocol Coordinator {
+protocol Coordinator {
     associatedtype ViewController: UIViewController
 
     var viewController: ViewController { get }
@@ -21,13 +21,13 @@ public protocol Coordinator {
 
 // MARK: - Modal Coordinator
 
-public protocol ModalCoordinator: Coordinator {
+protocol ModalCoordinator: Coordinator {
     var sourceController: UIViewController? { get }
     var navigationController: UINavigationController { get }
     var animated: Bool { get }
 }
 
-public extension ModalCoordinator {
+extension ModalCoordinator {
     var animated: Bool {
         return true
     }
@@ -44,12 +44,12 @@ public extension ModalCoordinator {
 
 // MARK: - Push Coordinator
 
-public protocol PushCoordinator: Coordinator {
+protocol PushCoordinator: Coordinator {
     var navigationController: UINavigationController? { get }
     var animated: Bool { get }
 }
 
-public extension PushCoordinator {
+extension PushCoordinator {
     var animated: Bool {
         return true
     }
@@ -66,11 +66,11 @@ public extension PushCoordinator {
 
 // MARK: - TabBar Item Coordinator
 
-public protocol TabBarItemCoordinator: Coordinator {
+protocol TabBarItemCoordinator: Coordinator {
     var tabBarController: UITabBarController? { get }
 }
 
-public extension TabBarItemCoordinator {
+extension TabBarItemCoordinator {
     func start() {
         configure(viewController: viewController)
 

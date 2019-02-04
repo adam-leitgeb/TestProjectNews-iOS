@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Request {
+protocol Request {
     var token: String? { get }
     var authentization: Authentization { get }
 
