@@ -7,12 +7,12 @@
 
 import UIKit
 
-public protocol CoordinatorInput: class {
+protocol CoordinatorInput: class {
     func showAlert(for error: Error)
     func dismiss()
 }
 
-public extension Coordinator {
+extension Coordinator {
     func showAlert(for error: Error) {
         let alert: UIAlertController = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
         alert.addAction(.closeAction)

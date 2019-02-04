@@ -41,7 +41,7 @@ final class AppCoordinator {
     // MARK: - Navigation
 
     private func showNewsFeed() {
-        let coordinator = NewsFeedCoordinator(window: window, serviceHolder: serviceHolder.get())
+        let coordinator = NewsFeedCoordinator(window: window, serviceHolder: serviceHolder)
         coordinator.start()
     }
 }
