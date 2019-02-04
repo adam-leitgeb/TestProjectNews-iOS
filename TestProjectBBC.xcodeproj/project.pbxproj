@@ -46,6 +46,7 @@
 		66F023BD2208220A00C2DA16 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F023B72208220A00C2DA16 /* PostDetailViewController.swift */; };
 		66F023BE2208220A00C2DA16 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F023B82208220A00C2DA16 /* PostDetailViewModel.swift */; };
 		66F023C52208223100C2DA16 /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66F023C32208223100C2DA16 /* PostDetailViewController.xib */; };
+		66F023C72208296600C2DA16 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F023C62208296600C2DA16 /* AnalyticsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		66F023B72208220A00C2DA16 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		66F023B82208220A00C2DA16 /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		66F023C32208223100C2DA16 /* PostDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
+		66F023C62208296600C2DA16 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				664E47EA2207FE84008F11D9 /* NewsFeedService.swift */,
+				66F023C62208296600C2DA16 /* AnalyticsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				664E47DB2207FD3C008F11D9 /* CoordinatorInput.swift in Sources */,
 				664E47D42207FD1F008F11D9 /* HTTPMethod.swift in Sources */,
 				66F023BD2208220A00C2DA16 /* PostDetailViewController.swift in Sources */,
+				66F023C72208296600C2DA16 /* AnalyticsService.swift in Sources */,
 				664E480222080976008F11D9 /* Configuration.swift in Sources */,
 				664E47F422080100008F11D9 /* UIAlertAction+Actions.swift in Sources */,
 				664E479E2207FC14008F11D9 /* AppDelegate.swift in Sources */,

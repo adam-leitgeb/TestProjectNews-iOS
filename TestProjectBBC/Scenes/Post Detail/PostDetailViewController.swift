@@ -33,6 +33,12 @@ final class PostDetailViewController: UIViewController {
         viewModel.viewDidLoad()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        viewModel.viewDidAppear()
+    }
+
     // MARK: - Setup
 
     private func setupTextView() {

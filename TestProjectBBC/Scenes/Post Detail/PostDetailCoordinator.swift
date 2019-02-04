@@ -19,13 +19,15 @@ final class PostDetailCoordinator: PushCoordinator {
     weak var navigationController: UINavigationController?
     let viewController: PostDetailViewController
 
+    private let serviceHolder: ServiceHolder
     private let post: Post
 
     // MARK: - Initialization
 
-    init(navigationController: UINavigationController, post: Post) {
+    init(navigationController: UINavigationController, serviceHolder: ServiceHolder, post: Post) {
         viewController = PostDetailViewController()
         self.navigationController = navigationController
+        self.serviceHolder = serviceHolder
         self.post = post
     }
 
@@ -36,6 +38,7 @@ final class PostDetailCoordinator: PushCoordinator {
         viewController.viewModel = PostDetailViewModel(
             coordinator: self,
             viewController: viewController,
+            analyticsService: serviceHolder.get(),
             post: post
         )
     }

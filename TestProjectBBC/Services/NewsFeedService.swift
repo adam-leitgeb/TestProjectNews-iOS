@@ -17,11 +17,13 @@ final class ProductionNewsFeedService {
     // MARK: - Properties
 
     private let apiAdapter: APIAdapter
+    private let analyticsService: AnalyticsService
 
     // MARK: - Initialization
 
-    init(apiAdapter: APIAdapter) {
+    init(apiAdapter: APIAdapter, analyticsService: AnalyticsService) {
         self.apiAdapter = apiAdapter
+        self.analyticsService = analyticsService
     }
 }
 
@@ -30,14 +32,18 @@ extension ProductionNewsFeedService: NewsFeedService {
     // MARK: - Calls
     
     func fetchNewsFeed(completion: @escaping (Result<NewsFeed>) -> Void) {
+        let requestInitiatedDate = Date()
+
         let request = GetNewsRequest()
-        apiAdapter.request(request, modelType: NewsFeed.self) { result in
+        apiAdapter.request(request, modelType: NewsFeed.self) { [weak self] result in
             do {
                 let newsFeed = try result()
                 completion(.success(newsFeed))
             } catch {
                 completion(.error(error))
             }
+            let fetchDuration = Date().timeIntervalSince(requestInitiatedDate)
+            self?.analyticsService.logRequest(time: fetchDuration)
         }
     }
 

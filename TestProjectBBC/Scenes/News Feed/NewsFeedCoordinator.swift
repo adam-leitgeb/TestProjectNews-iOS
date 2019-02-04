@@ -49,14 +49,19 @@ final class NewsFeedCoordinator: Coordinator {
         viewController.viewModel = NewsFeedViewModel(
             coordinator: self,
             viewController: viewController,
-            newsFeedService: serviceHolder.get()
+            newsFeedService: serviceHolder.get(),
+            analyticsService: serviceHolder.get()
         )
     }
 }
 
 extension NewsFeedCoordinator: NewsFeedCoordinatorInput {
     func showPostDetail(post: Post) {
-        let coordinator = PostDetailCoordinator(navigationController: navigationController, post: post)
+        let coordinator = PostDetailCoordinator(
+            navigationController: navigationController,
+            serviceHolder: serviceHolder,
+            post: post
+        )
         coordinator.start()
     }
 }

@@ -19,7 +19,12 @@ final class AppCoordinator {
         let apiAdapter = APIAdapter()
 
         let serviceHolder = ServiceHolder()
-        serviceHolder.add(NewsFeedService.self) { ProductionNewsFeedService(apiAdapter: apiAdapter) }
+        serviceHolder.add(AnalyticsService.self) {
+            ProductionAnalyticsService(apiAdapter: apiAdapter)
+        }
+        serviceHolder.add(NewsFeedService.self) {
+            ProductionNewsFeedService(apiAdapter: apiAdapter, analyticsService: serviceHolder.get())
+        }
         
         return serviceHolder
     }()

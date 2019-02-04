@@ -16,13 +16,15 @@ final class NewsFeedViewModel {
     private weak var viewController: NewsFeedViewControllerInput?
 
     private let newsFeedService: NewsFeedService
+    private let analyticsService: AnalyticsService
 
     // MARK: - Initialization
 
-    init(coordinator: NewsFeedCoordinatorInput, viewController: NewsFeedViewControllerInput, newsFeedService: NewsFeedService) {
+    init(coordinator: NewsFeedCoordinatorInput, viewController: NewsFeedViewControllerInput, newsFeedService: NewsFeedService, analyticsService: AnalyticsService) {
         self.coordinator = coordinator
         self.viewController = viewController
         self.newsFeedService = newsFeedService
+        self.analyticsService = analyticsService
     }
 
     // MARK: - Actions
@@ -30,6 +32,10 @@ final class NewsFeedViewModel {
     func viewDidLoad() {
         viewController?.update(state: .loading)
         loadData()
+    }
+
+    func viewDidAppear() {
+        analyticsService.logScene(sceneId: "news-feed")
     }
 
     func reloadTapped() {

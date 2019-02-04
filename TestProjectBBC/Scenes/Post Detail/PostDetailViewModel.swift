@@ -15,13 +15,15 @@ final class PostDetailViewModel {
     private let coordinator: PostDetailCoordinatorInput
     private weak var viewController: PostDetailViewControllerInput?
 
+    private let analyticsService: AnalyticsService
     private let post: Post
 
     // MARK: - Initialization
 
-    init(coordinator: PostDetailCoordinatorInput, viewController: PostDetailViewControllerInput, post: Post) {
+    init(coordinator: PostDetailCoordinatorInput, viewController: PostDetailViewControllerInput, analyticsService: AnalyticsService, post: Post) {
         self.coordinator = coordinator
         self.viewController = viewController
+        self.analyticsService = analyticsService
         self.post = post
     }
 
@@ -30,6 +32,10 @@ final class PostDetailViewModel {
     func viewDidLoad() {
         viewController?.updatePageTitle(post.headline)
         viewController?.updateArticle(with: post.introduction, lastUpdate: lastUpdateString)
+    }
+
+    func viewDidAppear() {
+        analyticsService.logScene(sceneId: "post-detail")
     }
 
     // MARK: - Utilities
