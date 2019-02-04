@@ -33,12 +33,21 @@ final class NewsFeedViewModel {
     }
 
     func reloadTapped() {
-
+        loadData()
     }
 
     // MARK: - Utilities
 
     private func loadData() {
-        // code..
+        newsFeedService.fetchNewsFeed { [weak self] result in
+            switch result {
+            case .success(let newsFeed):
+                let headlines = newsFeed.headlines
+                print(headlines.count, "of headlines loaded.")
+                // TODO: - Map posts to cell models and update viewController
+            case .error(let error):
+                self?.viewController?.update(state: .error(error))
+            }
+        }
     }
 }

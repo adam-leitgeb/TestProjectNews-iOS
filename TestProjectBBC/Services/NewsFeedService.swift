@@ -9,6 +9,7 @@
 import Foundation
 
 protocol NewsFeedService: Service {
+    func fetchNewsFeed(completion: @escaping (Result<NewsFeed>) -> Void)
 }
 
 final class ProductionNewsFeedService {
@@ -25,4 +26,26 @@ final class ProductionNewsFeedService {
 }
 
 extension ProductionNewsFeedService: NewsFeedService {
+
+    // MARK: - Calls
+    
+    func fetchNewsFeed(completion: @escaping (Result<NewsFeed>) -> Void) {
+        let request = GetNewsRequest()
+        apiAdapter.request(request, modelType: NewsFeed.self) { result in
+            do {
+                let newsFeed = try result()
+                completion(.success(newsFeed))
+            } catch {
+                completion(.error(error))
+            }
+        }
+    }
+
+    // MARK: - Requests
+
+    struct GetNewsRequest: Request {
+        var path: String = "/news"
+        var method: HTTPMethod = .get
+        var requestData: RequestData = .none
+    }
 }
