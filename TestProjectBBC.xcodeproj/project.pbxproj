@@ -30,6 +30,10 @@
 		664E47F02207FE84008F11D9 /* NewsFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664E47EA2207FE84008F11D9 /* NewsFeedService.swift */; };
 		664E47F2220800B5008F11D9 /* UIViewController+Plugins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664E47F1220800B5008F11D9 /* UIViewController+Plugins.swift */; };
 		664E47F422080100008F11D9 /* UIAlertAction+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664E47F322080100008F11D9 /* UIAlertAction+Actions.swift */; };
+		664E47F922080557008F11D9 /* ErrorStatePluginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664E47F722080557008F11D9 /* ErrorStatePluginViewController.swift */; };
+		664E47FA22080557008F11D9 /* ErrorStatePluginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 664E47F822080557008F11D9 /* ErrorStatePluginViewController.xib */; };
+		664E47FF2208062A008F11D9 /* LoadingStatePluginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664E47FD2208062A008F11D9 /* LoadingStatePluginViewController.swift */; };
+		664E48002208062A008F11D9 /* LoadingStatePluginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 664E47FE2208062A008F11D9 /* LoadingStatePluginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +74,10 @@
 		664E47EA2207FE84008F11D9 /* NewsFeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedService.swift; sourceTree = "<group>"; };
 		664E47F1220800B5008F11D9 /* UIViewController+Plugins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Plugins.swift"; sourceTree = "<group>"; };
 		664E47F322080100008F11D9 /* UIAlertAction+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Actions.swift"; sourceTree = "<group>"; };
+		664E47F722080557008F11D9 /* ErrorStatePluginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStatePluginViewController.swift; sourceTree = "<group>"; };
+		664E47F822080557008F11D9 /* ErrorStatePluginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorStatePluginViewController.xib; sourceTree = "<group>"; };
+		664E47FD2208062A008F11D9 /* LoadingStatePluginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStatePluginViewController.swift; sourceTree = "<group>"; };
+		664E47FE2208062A008F11D9 /* LoadingStatePluginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingStatePluginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,10 +261,38 @@
 		664E47F522080103008F11D9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				664E47F62208053E008F11D9 /* Plugin Controllers */,
 				664E47D92207FD3C008F11D9 /* CoordinatorInput.swift */,
 				664E47F322080100008F11D9 /* UIAlertAction+Actions.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		664E47F62208053E008F11D9 /* Plugin Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				664E47FB22080608008F11D9 /* Error State */,
+				664E47FC22080610008F11D9 /* Loading State */,
+			);
+			path = "Plugin Controllers";
+			sourceTree = "<group>";
+		};
+		664E47FB22080608008F11D9 /* Error State */ = {
+			isa = PBXGroup;
+			children = (
+				664E47F722080557008F11D9 /* ErrorStatePluginViewController.swift */,
+				664E47F822080557008F11D9 /* ErrorStatePluginViewController.xib */,
+			);
+			path = "Error State";
+			sourceTree = "<group>";
+		};
+		664E47FC22080610008F11D9 /* Loading State */ = {
+			isa = PBXGroup;
+			children = (
+				664E47FD2208062A008F11D9 /* LoadingStatePluginViewController.swift */,
+				664E47FE2208062A008F11D9 /* LoadingStatePluginViewController.xib */,
+			);
+			path = "Loading State";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +377,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				664E47A82207FC15008F11D9 /* LaunchScreen.storyboard in Resources */,
+				664E47FA22080557008F11D9 /* ErrorStatePluginViewController.xib in Resources */,
+				664E48002208062A008F11D9 /* LoadingStatePluginViewController.xib in Resources */,
 				664E47A52207FC15008F11D9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,8 +402,10 @@
 				664E47D72207FD1F008F11D9 /* Request.swift in Sources */,
 				664E47EB2207FE84008F11D9 /* NewsFeedCoordinator.swift in Sources */,
 				664E47F2220800B5008F11D9 /* UIViewController+Plugins.swift in Sources */,
+				664E47F922080557008F11D9 /* ErrorStatePluginViewController.swift in Sources */,
 				664E47D82207FD1F008F11D9 /* APIAdapterError.swift in Sources */,
 				664E47D62207FD1F008F11D9 /* Parameters.swift in Sources */,
+				664E47FF2208062A008F11D9 /* LoadingStatePluginViewController.swift in Sources */,
 				664E47D12207FD1F008F11D9 /* APIAdapter.swift in Sources */,
 				664E47EC2207FE84008F11D9 /* NewsFeedViewController.swift in Sources */,
 				664E47E32207FDEC008F11D9 /* AppCoordinator.swift in Sources */,

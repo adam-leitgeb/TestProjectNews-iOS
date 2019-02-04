@@ -18,8 +18,9 @@ final class NewsFeedViewController: UIViewController {
 
     enum State {
         case empty
+        case error(Error)
         case loading
-        case popupated
+        case populated
     }
 
     // MARK: - Properties
@@ -40,6 +41,12 @@ final class NewsFeedViewController: UIViewController {
 
     private func setupNavigationBar() {
         title = NSLocalizedString("news-feed.title", comment: "News")
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
+    private func setupTableView(_ tableView: UITableView?) {
+        tableView?.tableFooterView = UIView()
+        tableView?.estimatedRowHeight = 90
     }
 
     // MARK: - Actions
@@ -51,11 +58,66 @@ extension NewsFeedViewController: NewsFeedViewControllerInput {
     func update(state: NewsFeedViewController.State) {
         switch state {
         case .empty:
-            break
+            displayEmptyPlugin()
+        case .error(let error):
+            displayErrorPlugin(with: error)
         case .loading:
-            break
-        case .popupated:
-            break
+            displayLoadingPlugin()
+        case .populated:
+            // TODO: - Update datasource
+            displayContentPluginIfNeeded()
         }
+    }
+
+    // MARK: - Utilities
+
+    private func displayContentPluginIfNeeded() {
+        let tableViewPlugin = children.last as? UITableViewController ?? UITableViewController()
+        let tableView = tableViewPlugin.tableView
+
+        if children.last as? UITableViewController == nil {
+            setupTableView(tableView)
+            children.last?.remove()
+            add(tableViewPlugin)
+        }
+
+        tableView?.reloadData()
+    }
+
+    private func displayEmptyPlugin() {
+        children.last?.remove()
+
+        let emptyPluginController = ErrorStatePluginViewController()
+        emptyPluginController.configure(
+            title: NSLocalizedString("news-feed.empty-state.title", comment: "No news."),
+            actionTitle: NSLocalizedString("news-feed.empty-state.action", comment: "Reload"),
+            actionHandler: { [weak self] in
+                self?.viewModel.reloadTapped()
+            }
+        )
+
+        add(emptyPluginController)
+    }
+
+    private func displayErrorPlugin(with error: Error) {
+        children.last?.remove()
+
+        let errorPluginController = ErrorStatePluginViewController()
+        errorPluginController.configure(
+            title: error.localizedDescription,
+            actionTitle: NSLocalizedString("news-feed.error-state.action", comment: "Reload"),
+            actionHandler: { [weak self] in
+                self?.viewModel.reloadTapped()
+            }
+        )
+
+        add(errorPluginController)
+    }
+
+    private func displayLoadingPlugin() {
+        children.last?.remove()
+
+        let loadingPlugin = LoadingStatePluginViewController()
+        add(loadingPlugin)
     }
 }

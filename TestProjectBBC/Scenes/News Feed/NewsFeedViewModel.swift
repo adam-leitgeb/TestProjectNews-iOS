@@ -32,6 +32,10 @@ final class NewsFeedViewModel {
         loadData()
     }
 
+    func reloadTapped() {
+
+    }
+
     // MARK: - Utilities
 
     private func loadData() {
