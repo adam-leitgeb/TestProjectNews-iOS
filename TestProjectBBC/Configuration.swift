@@ -16,8 +16,4 @@ extension Request {
     var authentization: Authentization {
         return .none
     }
-
-    var baseURL: URL {
-        return URL(string: "http://private-4f03bd-bbctestproject.apiary-mock.com")!
-    }
 }

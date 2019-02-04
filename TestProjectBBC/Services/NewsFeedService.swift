@@ -50,6 +50,7 @@ extension ProductionNewsFeedService: NewsFeedService {
     // MARK: - Requests
 
     struct GetNewsRequest: Request {
+        var baseURL = URL(string: "http://private-4f03bd-bbctestproject.apiary-mock.com")!
         var path: String = "/news"
         var method: HTTPMethod = .get
         var requestData: RequestData = .none
