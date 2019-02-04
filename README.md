@@ -2,9 +2,9 @@
 
 This is test project for BBC News. I've finished the app in circa **4 hours**. 
 
-In this project, I tried to experiment by using child controllers as some kind of plugin controllers for better decomposition of the scene. 
+In this project, I tried to experiment by using child controllers as some kind of **plugin controllers** for better decomposition of the scene. 
 
-Each child controller (plugin) has it's own responsibility (populated state, error state, and loading state). Parent view controller is just switching between states. I see space for improvements, but I see big potential in easy scaling. 
+Each child controller (plugin) has it's own responsibility (populated state, error state, and loading state). Parent view controller is just switching between states. I see space for improvements, but I see big potential in **easy scaling**. 
 
 ### Dependencies
 
