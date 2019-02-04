@@ -18,12 +18,14 @@ class APIAdapter {
 
     func request<T: Codable>(_ request: Request, modelType: T.Type, completion: @escaping (() throws -> T) -> Void) {
         execute(request: request) { (data: Data?, error: Error?) in
-            if let error = error {
-                completion({ throw error })
-            } else if let data = data {
-                completion({ try self.decoder.decode(modelType, from: data) })
-            } else {
-                completion({ throw APIAdapterError.unknown })
+            DispatchQueue.main.async {
+                if let error = error {
+                    completion({ throw error })
+                } else if let data = data {
+                    completion({ try self.decoder.decode(modelType, from: data) })
+                } else {
+                    completion({ throw APIAdapterError.unknown })
+                }
             }
         }
     }
