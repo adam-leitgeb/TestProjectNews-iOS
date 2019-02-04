@@ -42,6 +42,10 @@
 		664E480E22081309008F11D9 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664E480C22081309008F11D9 /* PostTableViewCell.swift */; };
 		664E480F22081309008F11D9 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 664E480D22081309008F11D9 /* PostTableViewCell.xib */; };
 		664E481122081579008F11D9 /* UIColor+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664E481022081579008F11D9 /* UIColor+Colors.swift */; };
+		66F023BC2208220A00C2DA16 /* PostDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F023B62208220A00C2DA16 /* PostDetailCoordinator.swift */; };
+		66F023BD2208220A00C2DA16 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F023B72208220A00C2DA16 /* PostDetailViewController.swift */; };
+		66F023BE2208220A00C2DA16 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F023B82208220A00C2DA16 /* PostDetailViewModel.swift */; };
+		66F023C52208223100C2DA16 /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66F023C32208223100C2DA16 /* PostDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +98,10 @@
 		664E480C22081309008F11D9 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		664E480D22081309008F11D9 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		664E481022081579008F11D9 /* UIColor+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
+		66F023B62208220A00C2DA16 /* PostDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailCoordinator.swift; sourceTree = "<group>"; };
+		66F023B72208220A00C2DA16 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		66F023B82208220A00C2DA16 /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		66F023C32208223100C2DA16 /* PostDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				664E47E42207FE6C008F11D9 /* News Feed */,
+				66F023B5220821ED00C2DA16 /* Post Detail */,
 				664E47E12207FD51008F11D9 /* Launch */,
 			);
 			path = Scenes;
@@ -327,6 +336,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		66F023B5220821ED00C2DA16 /* Post Detail */ = {
+			isa = PBXGroup;
+			children = (
+				66F023B62208220A00C2DA16 /* PostDetailCoordinator.swift */,
+				66F023B82208220A00C2DA16 /* PostDetailViewModel.swift */,
+				66F023B72208220A00C2DA16 /* PostDetailViewController.swift */,
+				66F023C32208223100C2DA16 /* PostDetailViewController.xib */,
+			);
+			path = "Post Detail";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -409,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				664E47A82207FC15008F11D9 /* LaunchScreen.storyboard in Resources */,
+				66F023C52208223100C2DA16 /* PostDetailViewController.xib in Resources */,
 				664E480F22081309008F11D9 /* PostTableViewCell.xib in Resources */,
 				664E47FA22080557008F11D9 /* ErrorStatePluginViewController.xib in Resources */,
 				664E48002208062A008F11D9 /* LoadingStatePluginViewController.xib in Resources */,
@@ -449,13 +470,16 @@
 				664E481122081579008F11D9 /* UIColor+Colors.swift in Sources */,
 				664E47E32207FDEC008F11D9 /* AppCoordinator.swift in Sources */,
 				664E47ED2207FE84008F11D9 /* NewsFeedViewModel.swift in Sources */,
+				66F023BC2208220A00C2DA16 /* PostDetailCoordinator.swift in Sources */,
 				664E47DF2207FD43008F11D9 /* ServiceHolder.swift in Sources */,
 				664E47D32207FD1F008F11D9 /* Utilities.swift in Sources */,
 				664E47DC2207FD3C008F11D9 /* Coordinator.swift in Sources */,
 				664E47F02207FE84008F11D9 /* NewsFeedService.swift in Sources */,
 				664E47D52207FD1F008F11D9 /* RequestData.swift in Sources */,
+				66F023BE2208220A00C2DA16 /* PostDetailViewModel.swift in Sources */,
 				664E47DB2207FD3C008F11D9 /* CoordinatorInput.swift in Sources */,
 				664E47D42207FD1F008F11D9 /* HTTPMethod.swift in Sources */,
+				66F023BD2208220A00C2DA16 /* PostDetailViewController.swift in Sources */,
 				664E480222080976008F11D9 /* Configuration.swift in Sources */,
 				664E47F422080100008F11D9 /* UIAlertAction+Actions.swift in Sources */,
 				664E479E2207FC14008F11D9 /* AppDelegate.swift in Sources */,

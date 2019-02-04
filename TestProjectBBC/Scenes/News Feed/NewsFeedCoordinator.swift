@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 protocol NewsFeedCoordinatorInput: CoordinatorInput {
+    func showPostDetail(post: Post)
 }
 
 final class NewsFeedCoordinator: Coordinator {
@@ -54,4 +55,8 @@ final class NewsFeedCoordinator: Coordinator {
 }
 
 extension NewsFeedCoordinator: NewsFeedCoordinatorInput {
+    func showPostDetail(post: Post) {
+        let coordinator = PostDetailCoordinator(navigationController: navigationController, post: post)
+        coordinator.start()
+    }
 }

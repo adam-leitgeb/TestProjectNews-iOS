@@ -52,7 +52,7 @@ final class NewsFeedViewController: UIViewController {
     // MARK: - Setup
 
     private func setupNavigationBar() {
-        title = NSLocalizedString("news-feed.title", comment: "News")
+        title = "News"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
@@ -63,8 +63,11 @@ final class NewsFeedViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.dataSource = dataSource
         tableView.refreshControl = refreshControl
+
+        dataSource.delegate = self
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
 
         let nib = UINib(nibName: String(describing: PostTableViewCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: dataSource.cellIdentifier)
@@ -77,6 +80,12 @@ final class NewsFeedViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             self.viewModel.pullToRefreshInitiated()
         }
+    }
+}
+
+extension NewsFeedViewController: NewsFeedDataSourceDelegate {
+    func didSelect(post: Post) {
+        viewModel.didSelect(post: post)
     }
 }
 

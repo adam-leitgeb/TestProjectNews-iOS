@@ -8,15 +8,23 @@
 
 import UIKit
 
+protocol NewsFeedDataSourceDelegate: class {
+    func didSelect(post: Post)
+}
+
 final class NewsFeedDataSource: NSObject, UITableViewDataSource {
 
     // MARK: - Properties
 
-    var posts: [Post] = []
+    weak var delegate: NewsFeedDataSourceDelegate?
 
     var cellIdentifier: String {
         return String(describing: PostTableViewCell.self)
     }
+
+    // Data
+
+    var posts: [Post] = []
 
     // MARK: - Initialization
 
@@ -41,5 +49,14 @@ final class NewsFeedDataSource: NSObject, UITableViewDataSource {
         cell.configure(with: posts[indexPath.row])
 
         return cell
+    }
+}
+
+extension NewsFeedDataSource: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < posts.count else {
+            return
+        }
+        delegate?.didSelect(post: posts[indexPath.row])
     }
 }

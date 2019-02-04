@@ -40,6 +40,10 @@ final class NewsFeedViewModel {
         loadData()
     }
 
+    func didSelect(post: Post) {
+        coordinator.showPostDetail(post: post)
+    }
+
     // MARK: - Utilities
 
     private func loadData() {
