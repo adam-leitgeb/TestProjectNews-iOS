@@ -50,7 +50,8 @@ extension ProductionAnalyticsService: AnalyticsService {
     // Requests
 
     struct LogSceneRequest: Request {
-        var path: String = ""
+        var baseURL: URL = URL(string: "https://raw.githubusercontent.com")!
+        var path: String = "/bbc/news-apps-ios-coding-challenge/master/analytics"
         var method: HTTPMethod = .get
         var requestData: RequestData
 
@@ -61,7 +62,8 @@ extension ProductionAnalyticsService: AnalyticsService {
     }
 
     struct LogRequestTimeRequest: Request {
-        var path: String = ""
+        var baseURL: URL = URL(string: "https://raw.githubusercontent.com")!
+        var path: String = "/bbc/news-apps-ios-coding-challenge/master/analytics"
         var method: HTTPMethod = .get
         var requestData: RequestData
 
