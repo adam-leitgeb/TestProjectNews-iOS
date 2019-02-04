@@ -55,7 +55,8 @@ extension ProductionAnalyticsService: AnalyticsService {
         var requestData: RequestData
 
         init(sceneId: String) {
-            requestData = .urlEncoded(parameters: ["event": "display-\(sceneId)"])
+            // time = 0, because there is no API request. All content is already prefetched.
+            requestData = .urlEncoded(parameters: ["event": "display-\(sceneId)", "time": "0"])
         }
     }
 
@@ -65,7 +66,7 @@ extension ProductionAnalyticsService: AnalyticsService {
         var requestData: RequestData
 
         init(time: TimeInterval) {
-            requestData = .urlEncoded(parameters: ["time": time])
+            requestData = .urlEncoded(parameters: ["event": "load", "time": time])
         }
     }
 }
