@@ -36,6 +36,10 @@ final class NewsFeedViewModel {
         loadData()
     }
 
+    func pullToRefreshInitiated() {
+        loadData()
+    }
+
     // MARK: - Utilities
 
     private func loadData() {
@@ -46,6 +50,7 @@ final class NewsFeedViewModel {
             case .error(let error):
                 self?.viewController?.update(state: .error(error))
             }
+            self?.viewController?.endRefreshing()
         }
     }
 }

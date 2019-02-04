@@ -10,6 +10,7 @@ import UIKit
 
 protocol NewsFeedViewControllerInput: class {
     func update(state: NewsFeedViewController.State)
+    func endRefreshing()
 }
 
 final class NewsFeedViewController: UIViewController {
@@ -29,6 +30,15 @@ final class NewsFeedViewController: UIViewController {
     var viewModel: NewsFeedViewModel!
 
     private var dataSource = NewsFeedDataSource()
+
+    // UI
+
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(pullToRefreshInitiated), for: .valueChanged)
+
+        return refreshControl
+    }()
 
     // MARK: - View lifecycle
 
@@ -54,6 +64,7 @@ final class NewsFeedViewController: UIViewController {
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = dataSource
+        tableView.refreshControl = refreshControl
 
         let nib = UINib(nibName: String(describing: PostTableViewCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: dataSource.cellIdentifier)
@@ -61,7 +72,12 @@ final class NewsFeedViewController: UIViewController {
 
     // MARK: - Actions
 
-    // code..
+    @objc
+    private func pullToRefreshInitiated() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.viewModel.pullToRefreshInitiated()
+        }
+    }
 }
 
 extension NewsFeedViewController: NewsFeedViewControllerInput {
@@ -77,6 +93,10 @@ extension NewsFeedViewController: NewsFeedViewControllerInput {
             dataSource.posts = posts
             displayContentPluginIfNeeded()
         }
+    }
+
+    func endRefreshing() {
+        refreshControl.endRefreshing()
     }
 
     // MARK: - Utilities
