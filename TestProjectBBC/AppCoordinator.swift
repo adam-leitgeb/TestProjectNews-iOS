@@ -15,7 +15,7 @@ final class AppCoordinator {
 
     let window: UIWindow
 
-    private lazy var serviceHolder: ServiceHolder = {
+    lazy var serviceHolder: ServiceHolder = {
         let apiAdapter = APIAdapter()
 
         let serviceHolder = ServiceHolder()

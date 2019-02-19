@@ -11,24 +11,32 @@ import XCTest
 
 class TestProjectBBCTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    // MARK: - Properties
+
+    private var appCoordinator: AppCoordinator {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate, let appCoordinator = appDelegate.appCoordinator else {
+            XCTFail("Unable to reach appCoordinator")
+            fatalError("Unable to reach appCoordinator")
+        }
+        return appCoordinator
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    // MARK: - Tests
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    func testFetchingNews() {
+        let expectationForRequest = expectation(description: "Request succseed")
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        let notesListService: NewsFeedService = serviceHolder.get()
+        notesListService.fetchNewsFeed { result in
+            switch result {
+            case .success(let _):
+                expectationForRequest.fulfill()
+            case .error(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 30.0) { _ -> Void in
         }
     }
-
 }
