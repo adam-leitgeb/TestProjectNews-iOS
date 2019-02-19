@@ -26,10 +26,10 @@ class TestProjectBBCTests: XCTestCase {
     func testFetchingNews() {
         let expectationForRequest = expectation(description: "Request succseed")
 
-        let notesListService: NewsFeedService = serviceHolder.get()
+        let notesListService: NewsFeedService = appCoordinator.serviceHolder.get()
         notesListService.fetchNewsFeed { result in
             switch result {
-            case .success(let _):
+            case .success:
                 expectationForRequest.fulfill()
             case .error(let error):
                 XCTFail(error.localizedDescription)
