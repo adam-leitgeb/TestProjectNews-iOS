@@ -1,4 +1,4 @@
-# BBC News Test iOS APP
+# News Test iOS APP
 
 This is test project for BBC News. I've finished the app in circa **4 hours**. 
 
